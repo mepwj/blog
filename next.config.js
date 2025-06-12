@@ -7,8 +7,12 @@ const nextConfig = {
   async generateBuildId() {
     return 'my-blog-' + Date.now();
   },
-  // 빌드 최적화 (Turbopack 호환)
+  // 빌드 최적화
   swcMinify: true,
+  // 실험적 기능
+  experimental: {
+    esmExternals: true,
+  },
   // 캐싱 개선
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
