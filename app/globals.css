@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .prose-custom {
+    @apply prose prose-gray max-w-none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .prose-custom h1,
+  .prose-custom h2,
+  .prose-custom h3,
+  .prose-custom h4,
+  .prose-custom h5,
+  .prose-custom h6 {
+    @apply font-bold text-gray-900 dark:text-gray-100;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .prose-custom p {
+    @apply text-gray-700 dark:text-gray-300;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .prose-custom code {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  
+  .prose-custom pre {
+    @apply bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto;
+    max-width: 100%;
+  }
+  
+  .prose-custom pre code {
+    @apply bg-transparent p-0 text-sm;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-wrap: normal;
+  }
+  
+  .prose-custom blockquote {
+    @apply border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-100 rounded-r-lg;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .prose-custom img {
+    @apply rounded-lg shadow-md w-full h-auto;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .prose-custom table {
+    @apply text-sm;
+    max-width: 100%;
+  }
+  
+  /* 모바일에서 코드 블록 스크롤 */
+  .prose-custom pre {
+    @apply text-xs sm:text-sm;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* 모바일에서 테이블 스크롤 */
+  .prose-custom table {
+    @apply block overflow-x-auto whitespace-nowrap sm:table sm:overflow-visible sm:whitespace-normal;
+    max-width: 100%;
+  }
+  
+  /* 긴 URL이나 텍스트 처리 */
+  .prose-custom a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* 리스트 아이템 */
+  .prose-custom li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* 모바일에서 수평 스크롤 방지 */
+  @media (max-width: 768px) {
+    .prose-custom * {
+      max-width: 100% !important;
+    }
+    
+    .prose-custom pre {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    
+    .prose-custom table {
+      font-size: 0.875rem;
+    }
+    
+    /* 모바일에서 컨테이너 너비 통일 */
+    .prose-custom {
+      width: 100% !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    
+    /* prose 기본 여백 제거 */
+    .prose-custom > * {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+}
+
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
