@@ -2,7 +2,7 @@
 title: "Next.js 14 블로그 개발기"
 date: "2025-01-15"
 description: "Next.js 14 App Router로 개인 기술 블로그를 만들어보며 겪은 경험을 공유합니다."
-thumbnail: "/images/default/nextjs-blog.jpg"
+thumbnail: "/images/common/default-thumbnail.jpg"
 category: "Frontend"
 tags: ["Next.js", "React", "블로그", "개발"]
 draft: false
