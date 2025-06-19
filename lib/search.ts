@@ -1,14 +1,16 @@
 import Fuse from 'fuse.js';
-import { Post } from './posts';
+import { Post, getAllPosts } from './posts';
 
 export interface SearchResult {
   item: Post;
   score?: number;
 }
 
-export function searchPosts(posts: Post[], query: string): SearchResult[] {
-  if (!query.trim()) {
-    return posts.map(post => ({ item: post }));
+export async function searchPosts(query: string): Promise<Post[]> {
+  const posts = await getAllPosts();
+  
+  if (!query || !query.trim()) {
+    return [];
   }
 
   const fuse = new Fuse(posts, {
@@ -24,11 +26,12 @@ export function searchPosts(posts: Post[], query: string): SearchResult[] {
     minMatchCharLength: 2,
   });
   
-  return fuse.search(query);
+  const results = fuse.search(query);
+  return results.map(result => result.item);
 }
 
 export function highlightText(text: string, query: string): string {
-  if (!query.trim()) {
+  if (!query || !query.trim()) {
     return text;
   }
   
