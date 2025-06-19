@@ -11,7 +11,8 @@ interface CategoryPageProps {
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  const categories = [...new Set(posts.map(post => post.category))];
+  const categorySet = new Set(posts.map(post => post.category));
+  const categories = Array.from(categorySet);
   
   return categories.map((category) => ({
     category: encodeURIComponent(category),
