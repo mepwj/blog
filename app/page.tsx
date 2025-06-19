@@ -70,7 +70,7 @@ export default async function Home({ searchParams }: HomeProps) {
           <Pagination 
             currentPage={currentPage} 
             totalPages={totalPages}
-            baseUrl="/"
+            basePath="/"
           />
         </div>
       )}
