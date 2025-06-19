@@ -88,7 +88,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           <Pagination 
             currentPage={currentPage} 
             totalPages={totalPages}
-            baseUrl={`/category/${params.category}`}
+            basePath={`/category/${params.category}`}
           />
         </div>
       )}
