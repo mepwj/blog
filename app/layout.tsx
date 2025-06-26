@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllCategories } from '@/lib/posts';
 import { getProfile } from '@/lib/profile';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -13,23 +14,33 @@ export function generateMetadata() {
   const profile = getProfile();
   
   return {
-    title: `${profile.blog.tagline} | ${profile.blog.name}`,
-    description: profile.description,
+    title: profile.blog.name,
+    description: profile.title,
     keywords: ['개발', '프로그래밍', '기술', '블로그', profile.nickname.toLowerCase()],
     authors: [{ name: profile.name }],
     creator: profile.name,
+    manifest: '/manifest.json',
+    icons: {
+      icon: [
+        { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
+    },
     openGraph: {
       type: 'website',
       locale: 'ko_KR',
       url: `https://${profile.blog.domain}`,
-      title: `${profile.blog.tagline} | ${profile.blog.name}`,
-      description: profile.description,
+      title: profile.blog.name,
+      description: profile.title,
       siteName: profile.blog.name,
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${profile.blog.tagline} | ${profile.blog.name}`,
-      description: profile.description,
+      title: profile.blog.name,
+      description: profile.title,
     },
   };
 }
@@ -55,10 +66,14 @@ export default async function RootLayout({
               <div className="flex items-center justify-between h-16">
                 {/* 로고 */}
                 <Link href="/" className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gray-900 dark:bg-white rounded-lg flex items-center justify-center shadow-md transition-colors">
-                    <span className="text-white dark:text-gray-900 font-bold text-lg">{profile.logo.text}</span>
-                  </div>
-                  <span className="font-bold text-xl text-gray-900 dark:text-white hidden sm:block">{profile.blog.domain}</span>
+                  <Image
+                    src="/favicon-32x32.png"
+                    alt="CoffeeNuts Logo"
+                    width={32}
+                    height={32}
+                    className="rounded-lg"
+                  />
+                  <span className="font-bold text-xl text-gray-900 dark:text-white">{profile.blog.domain}</span>
                 </Link>
                 
                 {/* 네비게이션 */}

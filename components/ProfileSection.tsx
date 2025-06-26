@@ -25,13 +25,10 @@ export default function ProfileSection() {
         {/* 프로필 정보 */}
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            {profile.name} ({profile.nickname})
+            {profile.nickname}
           </h1>
           <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
             {profile.title}
-          </p>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-            {profile.description}
           </p>
           
           {/* 소셜 링크 */}
@@ -69,11 +66,23 @@ export default function ProfileSection() {
             <a 
               href={`mailto:${profile.social.email}`}
               className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              title="개인 이메일"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </a>
+            {profile.social.workEmail && (
+              <a 
+                href={`mailto:${profile.social.workEmail}`}
+                className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                title="회사 이메일"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </a>
+            )}
           </div>
           
           {/* 스킬/관심사 태그 */}
