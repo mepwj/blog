@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Post } from '@/lib/posts';
 import { highlightText } from '@/lib/search';
+import DefaultThumbnail from './DefaultThumbnail';
 
 interface PostCardProps {
   post: Post;
@@ -20,9 +21,27 @@ export default function PostCard({ post, searchQuery, priority = false }: PostCa
 
   return (
     <article className="bg-white dark:bg-gray-900 rounded-2xl hover:shadow-xl transition-all duration-300 overflow-hidden group">
-      <Link href={`/posts/${post.slug}`} className="block">
+      <Link href={`/blog/${post.slug}`} className="flex flex-col md:flex-row">
+        {/* 썸네일 */}
+        <div className="relative w-full md:w-64 h-48 md:h-auto md:min-h-[180px] flex-shrink-0 overflow-hidden">
+          {post.thumbnailUrl ? (
+            <Image
+              src={post.thumbnailUrl}
+              alt={post.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 256px"
+              priority={priority}
+              quality={100}
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          ) : (
+            <div className="absolute inset-0">
+              <DefaultThumbnail title={post.title} category={post.category} />
+            </div>
+          )}
+        </div>
         {/* 포스트 내용 */}
-        <div className="p-6">
+        <div className="flex-1 p-6">
           {/* 제목 */}
           <h2 
             className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors"
@@ -55,7 +74,7 @@ export default function PostCard({ post, searchQuery, priority = false }: PostCa
           </div>
           
           {/* 태그 */}
-          {post.tags.length > 0 && (
+          {post.tags && post.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-4">
               {post.tags.map((tag) => (
                 <span

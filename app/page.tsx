@@ -43,7 +43,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
       {/* 포스트 목록 */}
       {currentPosts.length > 0 ? (
-        <div className="space-y-6">
+        <div className="space-y-4">
           {currentPosts.map((post, index) => (
             <PostCard key={post.slug} post={post} priority={index === 0} />
           ))}

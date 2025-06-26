@@ -1,13 +1,13 @@
 import Fuse from 'fuse.js';
-import { Post, getAllPosts } from './posts';
+import { blogPosts } from '@/.velite';
 
 export interface SearchResult {
-  item: Post;
+  item: typeof blogPosts[0];
   score?: number;
 }
 
-export async function searchPosts(query: string): Promise<Post[]> {
-  const posts = await getAllPosts();
+export async function searchPosts(query: string): Promise<typeof blogPosts> {
+  const posts = blogPosts.filter(post => !post.draft);
   
   if (!query || !query.trim()) {
     return [];
@@ -17,7 +17,7 @@ export async function searchPosts(query: string): Promise<Post[]> {
     keys: [
       { name: 'title', weight: 0.4 },
       { name: 'description', weight: 0.3 },
-      { name: 'content', weight: 0.2 },
+      { name: 'body', weight: 0.2 },
       { name: 'tags', weight: 0.05 },
       { name: 'category', weight: 0.05 }
     ],

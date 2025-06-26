@@ -76,7 +76,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       </header>
 
       {/* 포스트 목록 */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         {currentPosts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}

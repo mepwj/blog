@@ -15,6 +15,7 @@ export default function ProfileSection() {
               alt={`${profile.name} 프로필`}
               width={128}
               height={128}
+              quality={100}
               className="w-full h-full object-cover"
               priority
             />

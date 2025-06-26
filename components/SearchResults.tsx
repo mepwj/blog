@@ -54,7 +54,7 @@ export default async function SearchResults({ query }: SearchResultsProps) {
       </div>
 
       {/* 검색 결과 목록 */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         {results.map((post) => (
           <PostCard key={post.slug} post={post} searchQuery={query} />
         ))}

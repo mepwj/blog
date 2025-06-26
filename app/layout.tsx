@@ -55,8 +55,8 @@ export default async function RootLayout({
               <div className="flex items-center justify-between h-16">
                 {/* 로고 */}
                 <Link href="/" className="flex items-center space-x-2">
-                  <div className={`w-8 h-8 bg-gradient-to-br ${profile.logo.gradient} rounded-lg flex items-center justify-center`}>
-                    <span className="text-white font-bold text-lg">{profile.logo.text}</span>
+                  <div className="w-8 h-8 bg-gray-900 dark:bg-white rounded-lg flex items-center justify-center shadow-md transition-colors">
+                    <span className="text-white dark:text-gray-900 font-bold text-lg">{profile.logo.text}</span>
                   </div>
                   <span className="font-bold text-xl text-gray-900 dark:text-white hidden sm:block">{profile.blog.domain}</span>
                 </Link>

@@ -1,162 +1,212 @@
----
-title: "블로그 포스트 작성 가이드"
-date: "2025-01-01"
-description: "Coffeenuts.dev 블로그 포스트 작성을 위한 가이드입니다."
-thumbnail: "/images/common/default-thumbnail.jpg"
-category: "Guide"
-tags: ["가이드", "블로그", "마크다운"]
-draft: true
----
+# 블로그 글 작성 가이드
 
-# 📝 Coffeenuts.dev 블로그 포스트 작성 가이드
+이 문서는 velite 기반 블로그에 새로운 글을 작성하는 방법을 설명합니다.
 
-이 가이드는 블로그에 표시되지 않습니다 (`draft: true` 설정).
+## 📁 디렉토리 구조
 
-## 📁 파일 구조
+```
+posts/
+└── blog/                    # 모든 블로그 글은 이 폴더에 작성
+    ├── my-first-post.mdx   # MDX 파일로 작성
+    └── another-post.mdx
 
-### 1. 포스트 파일명
-- 위치: `/posts/` 폴더
-- 형식: `제목.md` (예: `react-hooks-guide.md`)
-- URL: `/posts/제목` (예: `/posts/react-hooks-guide`)
+public/
+└── posts/
+    ├── thumbnail/          # 썸네일 이미지
+    │   └── my-first-post.jpg
+    └── my-first-post/      # 포스트별 이미지
+        ├── image1.png
+        └── image2.gif
+```
 
-### 2. 이미지 파일
-- 위치: `/public/images/포스트제목/` 폴더
-- 썸네일: `thumbnail.jpg` (필수)
-- 기타 이미지: 자유롭게 명명
+## ✍️ 새 글 작성하기
 
-## 📋 Frontmatter 설정
+### 1. MDX 파일 생성
 
-```yaml
+`posts/blog/` 디렉토리에 새로운 `.mdx` 파일을 생성합니다:
+
+```bash
+# 예시
+posts/blog/my-awesome-post.mdx
+```
+
+### 2. Frontmatter 작성
+
+모든 MDX 파일은 다음과 같은 frontmatter로 시작해야 합니다:
+
+```markdown
 ---
 title: "포스트 제목"
-date: "YYYY-MM-DD"
-description: "포스트 설명 (SEO 및 카드에 표시)"
-thumbnail: "/images/포스트제목/thumbnail.jpg"
-category: "카테고리명"
-tags: ["태그1", "태그2", "태그3"]
-draft: false  # true면 블로그에 표시되지 않음
+date: "2025-01-20"
+description: "포스트에 대한 간단한 설명 (검색 결과에 표시됨)"
+thumbnailUrl: "/posts/thumbnail/my-awesome-post.jpg"
+category: "Frontend"
+tags: ["React", "Next.js", "TypeScript"]
+draft: false
 ---
 ```
 
-### 필수 항목
-- `title`: 포스트 제목
-- `date`: 작성일 (YYYY-MM-DD 형식)
-- `category`: 카테고리명
-- `draft`: 게시 여부 (false = 게시, true = 숨김)
+#### Frontmatter 필드 설명:
+- `title`: 포스트 제목 (필수)
+- `date`: 작성일 (YYYY-MM-DD 형식, 필수)
+- `description`: 포스트 설명 (필수)
+- `thumbnailUrl`: 썸네일 이미지 경로 (필수)
+- `category`: 카테고리 (필수)
+- `tags`: 태그 배열 (선택)
+- `draft`: 초안 여부 (선택, 기본값: false)
 
-### 선택 항목
-- `description`: 포스트 설명
-- `thumbnail`: 썸네일 이미지 경로
-- `tags`: 태그 배열
+### 3. 본문 작성
 
-## 🖼️ 이미지 사용법
+일반적인 Markdown 문법과 MDX 기능을 사용할 수 있습니다:
 
-### 썸네일 이미지
-```yaml
-thumbnail: "/images/포스트제목/thumbnail.jpg"
-```
-
-### 본문 이미지
 ```markdown
-![이미지 설명](/images/포스트제목/이미지명.jpg)
-```
+# 제목
 
-## 📝 마크다운 작성 팁
+일반 텍스트를 작성합니다.
 
-### 제목 구조
-```markdown
-# H1 - 포스트 메인 제목
-## H2 - 섹션 제목
-### H3 - 하위 섹션
-```
+## 부제목
+
+**굵은 글씨**와 *기울임체*를 사용할 수 있습니다.
+
+### 목록
+
+- 항목 1
+- 항목 2
+  - 하위 항목
 
 ### 코드 블록
-````markdown
-```javascript
-function example() {
-  console.log("Hello, World!");
+
+\`\`\`typescript
+interface User {
+  name: string;
+  age: number;
 }
-```
-````
 
-### 인용구
-```markdown
-> 이것은 인용구입니다.
-```
+const user: User = {
+  name: "홍길동",
+  age: 25
+};
+\`\`\`
 
-### 리스트
-```markdown
-- 순서 없는 리스트
-- 아이템 2
+### 인라인 코드
 
-1. 순서 있는 리스트
-2. 아이템 2
-```
+`const name = "velite"` 처럼 인라인 코드를 사용할 수 있습니다.
+
+### 인용문
+
+> 이것은 인용문입니다.
+> 여러 줄로 작성할 수 있습니다.
 
 ### 링크
-```markdown
-[링크 텍스트](https://example.com)
+
+[Next.js 공식 문서](https://nextjs.org)
+
+### 표
+
+| 제목 | 설명 |
+|------|------|
+| Velite | 정적 사이트 생성기 |
+| MDX | 마크다운 + JSX |
 ```
 
-### 강조
-```markdown
-**굵게** 또는 __굵게__
-*기울임* 또는 _기울임_
-`인라인 코드`
+## 🖼️ 이미지 추가하기
+
+### 1. 썸네일 이미지
+
+썸네일은 `/public/posts/thumbnail/` 디렉토리에 저장합니다:
+
+```bash
+# 파일명은 포스트 slug와 동일하게
+public/posts/thumbnail/my-awesome-post.jpg
 ```
 
-## 📂 카테고리 예시
-- Frontend
-- Backend
-- DevOps
-- JavaScript
-- TypeScript
-- React
-- Node.js
-- Database
-- Tools
-- Review
+### 2. 본문 이미지
 
-## 🏷️ 태그 예시
-- javascript
-- typescript
-- react
-- nextjs
-- nodejs
-- css
-- html
-- git
-- database
-- api
-- tutorial
-- review
-- tips
+포스트 본문에 사용할 이미지는 포스트별 디렉토리에 저장합니다:
 
-## ✅ 체크리스트
+```bash
+# 포스트별 디렉토리 생성
+public/posts/my-awesome-post/
+├── feature-image.png
+├── diagram.svg
+└── demo.gif
+```
 
-포스트 작성 전:
-- [ ] 파일명이 URL에 적합한지 확인
-- [ ] 썸네일 이미지 준비
-- [ ] 카테고리 결정
+### 3. 이미지 삽입
 
-포스트 작성 중:
-- [ ] Frontmatter 모든 필수 항목 작성
-- [ ] 이미지 경로 확인
-- [ ] 코드 블록 언어 지정
-- [ ] 제목 구조 정리
+MDX 파일에서 이미지를 삽입할 때는 절대 경로를 사용합니다:
 
-포스트 작성 후:
-- [ ] `draft: false`로 설정
-- [ ] 로컬에서 미리보기 확인
-- [ ] 배포 후 최종 확인
+```markdown
+![이미지 설명](/posts/my-awesome-post/feature-image.png)
 
-## 🚀 배포
+![다이어그램](/posts/my-awesome-post/diagram.svg)
 
-1. 파일 저장
-2. Git 커밋 & 푸시
-3. Vercel 자동 배포
-4. 블로그에서 확인
+![데모 GIF](/posts/my-awesome-post/demo.gif)
+```
 
+## 🚀 글 발행하기
+
+### 1. 초안 작성
+
+작성 중인 글은 `draft: true`로 설정하여 공개되지 않도록 할 수 있습니다:
+
+```yaml
 ---
+title: "작성 중인 글"
+draft: true
+---
+```
 
-💡 **팁**: 이 가이드 파일은 `draft: true`로 설정되어 있어 블로그에 표시되지 않습니다.
+### 2. 로컬에서 확인
+
+```bash
+npm run dev
+```
+
+개발 서버를 실행하고 `http://localhost:3000/blog`에서 확인합니다.
+
+### 3. 발행
+
+`draft: false`로 변경하거나 해당 필드를 제거하면 글이 공개됩니다.
+
+## 📋 체크리스트
+
+새 글을 작성할 때 다음 사항을 확인하세요:
+
+- [ ] MDX 파일을 `posts/blog/` 디렉토리에 생성했나요?
+- [ ] Frontmatter의 필수 필드를 모두 작성했나요?
+- [ ] 썸네일 이미지를 `/public/posts/thumbnail/`에 추가했나요?
+- [ ] 본문 이미지를 `/public/posts/[포스트명]/`에 추가했나요?
+- [ ] 이미지 경로가 올바른가요?
+- [ ] `draft` 상태를 확인했나요?
+- [ ] 카테고리와 태그가 적절한가요?
+
+## 💡 팁
+
+1. **파일명**: 영문 소문자와 하이픈(-)을 사용하세요 (예: `my-awesome-post.mdx`)
+2. **이미지 최적화**: 웹에 최적화된 형식(WebP, 최적화된 JPEG/PNG)을 사용하세요
+3. **제목 길이**: SEO를 위해 60자 이내로 작성하세요
+4. **설명 길이**: 150자 이내로 간결하게 작성하세요
+5. **코드 하이라이팅**: 지원되는 언어 목록은 [여기](https://github.com/shikijs/shiki/blob/main/docs/languages.md)에서 확인하세요
+
+## 🔧 문제 해결
+
+### velite 빌드 오류
+
+```bash
+# velite 캐시 삭제 후 재빌드
+rm -rf .velite
+npm run build
+```
+
+### 이미지가 표시되지 않을 때
+
+1. 이미지 경로가 `/posts/`로 시작하는지 확인
+2. 파일명에 특수문자가 없는지 확인
+3. 이미지 파일이 실제로 존재하는지 확인
+
+### 포스트가 목록에 나타나지 않을 때
+
+1. `draft: false`인지 확인
+2. frontmatter 형식이 올바른지 확인
+3. 날짜 형식이 "YYYY-MM-DD"인지 확인
