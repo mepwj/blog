@@ -22,7 +22,7 @@ export default defineConfig({
         .transform((data) => ({
           ...data,
           permalink: `/${data.slug}`,
-          slug: data.slug.replaceAll("blog/", ""),
+          slug: data.slug.replace(/^blog\//, ""),
         })),
     },
   },
