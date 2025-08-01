@@ -3,29 +3,13 @@
 import { useTheme } from './ThemeProvider';
 
 export default function ThemeToggle() {
-  const contextValue = useTheme();
-  const { theme, setTheme } = contextValue;
-
-  console.log('[ThemeToggle] Context value:', contextValue);
-  console.log('[ThemeToggle] 현재 테마:', theme);
-  console.log('[ThemeToggle] setTheme 함수:', typeof setTheme);
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    console.log('[ThemeToggle] 토글 클릭됨, 현재 테마:', theme);
-    console.log('[ThemeToggle] setTheme 타입:', typeof setTheme);
-    
-    try {
-      if (theme === 'light' || theme === 'system') {
-        console.log('[ThemeToggle] 다크모드로 변경 시도');
-        setTheme('dark');
-        console.log('[ThemeToggle] setTheme(dark) 호출 완료');
-      } else {
-        console.log('[ThemeToggle] 라이트모드로 변경 시도');
-        setTheme('light');
-        console.log('[ThemeToggle] setTheme(light) 호출 완료');
-      }
-    } catch (error) {
-      console.error('[ThemeToggle] setTheme 에러:', error);
+    if (theme === 'light' || theme === 'system') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
     }
   };
 
