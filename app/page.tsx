@@ -2,7 +2,7 @@ import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
 import CategoryDropdown from '@/components/CategoryDropdown';
 import ProfileSection from '@/components/ProfileSection';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts, getAllCategories } from '@/lib/posts';
 import Link from 'next/link';
 
 interface HomeProps {
@@ -11,6 +11,7 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
   const posts = await getAllPosts();
+  const categories = await getAllCategories();
   const currentPage = Number(searchParams.page) || 1;
   const postsPerPage = 5;
   const totalPages = Math.ceil(posts.length / postsPerPage);
@@ -38,7 +39,7 @@ export default async function Home({ searchParams }: HomeProps) {
         >
           최신
         </Link>
-        <CategoryDropdown />
+        <CategoryDropdown categories={categories} />
       </div>
 
       {/* 포스트 목록 */}

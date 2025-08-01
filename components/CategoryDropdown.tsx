@@ -1,16 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Category } from '@/lib/types';
 
-interface Category {
-  category: string;
-  count: number;
+interface CategoryDropdownProps {
+  categories: Category[];
 }
 
-export default function CategoryDropdown() {
-  const [categories, setCategories] = useState<Category[]>([]);
+export default function CategoryDropdown({ categories }: CategoryDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   
@@ -18,20 +17,6 @@ export default function CategoryDropdown() {
   const currentCategory = pathname.includes('/category/') 
     ? decodeURIComponent(pathname.split('/category/')[1])
     : null;
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch('/api/categories');
-        const data = await response.json();
-        setCategories(data);
-      } catch (error) {
-        console.error('카테고리 로딩 실패:', error);
-      }
-    };
-    
-    fetchCategories();
-  }, []);
 
   return (
     <div className="relative">
