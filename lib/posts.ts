@@ -1,4 +1,5 @@
 import { blogPosts } from '@/.velite';
+import { Category, Tag } from './types';
 
 export interface Post {
   slug: string;
@@ -30,7 +31,7 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export async function getAllCategories(): Promise<{category: string, count: number}[]> {
+export async function getAllCategories(): Promise<Category[]> {
   const categoryMap = new Map<string, number>();
   
   blogPosts
@@ -45,7 +46,7 @@ export async function getAllCategories(): Promise<{category: string, count: numb
     .sort((a, b) => b.count - a.count);
 }
 
-export async function getAllTags(): Promise<{tag: string, count: number}[]> {
+export async function getAllTags(): Promise<Tag[]> {
   const tagMap = new Map<string, number>();
   
   blogPosts
