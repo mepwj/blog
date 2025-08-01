@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "velite dev & next dev --turbo",
-    "dev:fast": "velite dev & next dev --turbo --port 3000",
-    "build": "velite build && next build",
+    "dev": "concurrently \"npx velite dev\" \"next dev --turbo\"",
+    "dev:fast": "concurrently \"npx velite dev\" \"next dev --turbo --port 3000\"",
+    "dev:windows": "start npx velite dev && next dev --turbo",
+    "build": "npx velite build && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -23,6 +24,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.4.0",
+    "concurrently": "^9.2.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.0",
