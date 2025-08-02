@@ -1,0 +1,104 @@
+---
+title: "제목을 입력하세요"
+date: "YYYY-MM-DD"
+description: "포스트에 대한 간단한 설명을 입력하세요. 검색 결과와 미리보기에 표시됩니다."
+thumbnailUrl: "/posts/thumbnail/파일명.jpg"
+category: "React"
+tags: ["태그1", "태그2", "태그3"]
+draft: true
+---
+
+첫 문단은 포스트의 도입부입니다. 독자의 관심을 끌고 이 글에서 다룰 내용을 간략히 소개합니다.
+
+## 주요 개념
+
+여기서 핵심 개념을 설명합니다. 코드 예제를 포함할 수 있습니다:
+
+```javascript
+// 코드 예제
+function example() {
+  return "Hello World";
+}
+```
+
+### 세부 내용
+
+더 자세한 설명이 필요한 경우 하위 제목을 사용합니다.
+
+## 실전 예제
+
+실제 사용 예시를 보여줍니다:
+
+```jsx
+import React from 'react';
+
+function Component() {
+  return (
+    <div>
+      <h1>예제 컴포넌트</h1>
+    </div>
+  );
+}
+```
+
+![이미지 설명](/posts/포스트명/이미지파일.png)
+
+### 주요 특징
+
+- **특징 1**: 설명
+- **특징 2**: 설명
+- **특징 3**: 설명
+
+## 고급 사용법
+
+```typescript
+interface ExampleProps {
+  title: string;
+  description?: string;
+}
+
+const Example: React.FC<ExampleProps> = ({ title, description }) => {
+  return (
+    <div>
+      <h2>{title}</h2>
+      {description && <p>{description}</p>}
+    </div>
+  );
+};
+```
+
+### 성능 최적화
+
+1. **최적화 방법 1**
+   - 세부 설명
+   - 구현 방법
+
+2. **최적화 방법 2**
+   - 세부 설명
+   - 구현 방법
+
+## 주의사항
+
+> ⚠️ **중요**: 주의해야 할 내용을 여기에 작성합니다.
+
+## 마무리
+
+포스트를 정리하고 핵심 내용을 다시 한번 요약합니다. 독자가 실제로 적용해볼 수 있도록 격려하는 문장으로 마무리합니다.
+
+## 참고 자료
+
+- [참고 링크 1](https://example.com)
+- [참고 링크 2](https://example.com)
+- [참고 링크 3](https://example.com)
+
+---
+
+<!-- 템플릿 사용 안내:
+1. 파일명을 적절히 변경하세요 (예: react-hooks-guide.mdx)
+2. draft: true를 false로 변경하면 블로그에 게시됩니다
+3. 날짜는 YYYY-MM-DD 형식으로 입력하세요 (예: 2025-08-02)
+4. 카테고리 옵션: React, JavaScript, TypeScript, Next.js, etc.
+5. 썸네일 이미지는 /public/posts/thumbnail/ 폴더에 저장하세요
+6. 본문 이미지는 /public/posts/[포스트명]/ 폴더에 저장하세요
+7. 이 주석은 삭제하고 사용하세요
+-->

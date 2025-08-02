@@ -6,7 +6,7 @@ export default defineConfig({
   collections: {
     blogPosts: {
       name: "Blog",
-      pattern: "blog/*.mdx",
+      pattern: "blog/[!_]*.mdx",
       schema: s
         .object({
           title: s.string().max(99),
