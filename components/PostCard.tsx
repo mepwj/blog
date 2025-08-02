@@ -51,7 +51,7 @@ export default function PostCard({ post, searchQuery, priority = false }: PostCa
           {/* 설명 */}
           {post.description && (
             <p 
-              className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 text-sm leading-relaxed"
+              className="text-gray-600 dark:text-gray-500 mb-4 line-clamp-3 text-sm leading-relaxed"
               dangerouslySetInnerHTML={{ __html: highlightedDescription }}
             />
           )}
@@ -79,7 +79,7 @@ export default function PostCard({ post, searchQuery, priority = false }: PostCa
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs text-gray-600 dark:text-gray-400"
+                  className="text-xs text-gray-600 dark:text-gray-500"
                 >
                   #{tag}
                 </span>
