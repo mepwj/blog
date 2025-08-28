@@ -163,7 +163,7 @@ draft: true
 npm run dev
 ```
 
-개발 서버를 실행하고 `http://localhost:3000/blog`에서 확인합니다.
+개발 서버를 실행하고 `http://localhost:3000`에서 확인합니다.
 
 ### 3. 발행
 

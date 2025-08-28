@@ -2,6 +2,8 @@
 
 커피넛의 개인 기술 블로그입니다. Next.js 14와 Velite를 사용하여 구축된 정적 사이트 생성 블로그입니다.
 
+🔗 **배포된 사이트**: [https://coffeenuts.dev/](https://coffeenuts.dev/)
+
 ## 주요 기능
 
 - **MDX 기반 블로그**: Velite를 사용한 정적 사이트 생성
@@ -27,20 +29,38 @@
 
 ```
 ├── app/                    # Next.js App Router
+│   ├── page.tsx           # 홈페이지 (블로그 목록)
+│   ├── layout.tsx         # 루트 레이아웃
+│   ├── not-found.tsx      # 404 페이지
+│   ├── manifest.json      # PWA 매니페스트
 │   ├── blog/              # 블로그 라우트
-│   │   ├── page.tsx       # 블로그 목록
 │   │   └── [slug]/        # 포스트 상세 페이지
 │   ├── category/          # 카테고리별 페이지
 │   └── search/            # 검색 페이지
 ├── components/            # React 컴포넌트
+│   ├── PostCard.tsx       # 포스트 카드
+│   ├── ProfileSection.tsx # 프로필 섹션
+│   ├── SearchInput.tsx    # 검색 입력
+│   ├── ThemeProvider.tsx  # 테마 프로바이더
+│   └── ...                # 기타 컴포넌트
 ├── lib/                   # 유틸리티 함수
+│   ├── posts.ts          # 포스트 관련 함수
+│   ├── search.ts         # 검색 기능
+│   └── profile.ts        # 프로필 데이터
+├── data/
+│   └── profile.json      # 프로필 정보
 ├── posts/                 # MDX 블로그 포스트
+│   ├── GUIDE.md          # 작성 가이드
 │   └── blog/             # 블로그 포스트 파일
+│       └── _template.mdx # 포스트 템플릿
 ├── public/
+│   ├── images/           # 일반 이미지
+│   │   └── common/       # 공통 이미지
 │   └── posts/            # 포스트 이미지
 │       ├── thumbnail/    # 썸네일 이미지
 │       └── [포스트명]/   # 포스트별 이미지
-└── velite.config.ts      # Velite 설정
+├── velite.config.ts      # Velite 설정
+└── tailwind.config.js    # Tailwind CSS 설정
 ```
 
 ## 시작하기
