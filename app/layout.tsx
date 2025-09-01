@@ -7,6 +7,7 @@ import { getProfile } from '@/lib/profile';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import ThemeToggle from '@/components/ThemeToggle';
 import ThemeScript from '@/components/ThemeScript';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -99,6 +100,7 @@ export default async function RootLayout({
             </div>
           </main>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
