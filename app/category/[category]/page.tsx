@@ -9,13 +9,15 @@ interface CategoryPageProps {
   searchParams: { page?: string };
 }
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const posts = await getAllPosts();
   const categorySet = new Set(posts.map(post => post.category));
   const categories = Array.from(categorySet);
   
   return categories.map((category) => ({
-    category: encodeURIComponent(category),
+    category: category,
   }));
 }
 
