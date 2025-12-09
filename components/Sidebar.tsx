@@ -15,9 +15,9 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { href: '/blog', label: 'Blog' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/about', label: 'About' },
+  { href: '/blog', label: '블로그' },
+  { href: '/portfolio', label: '포트폴리오' },
+  { href: '/about', label: '소개' },
 ];
 
 function getSocialLinks(social: Profile['social']) {

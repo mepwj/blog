@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 import { getProjectBySlug, getProjectSlugs } from '@/lib/mdx';
 import type { Metadata } from 'next';
 
@@ -110,7 +111,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                 />
               </svg>
-              Demo
+              시연 영상
             </a>
           )}
           {project.frontmatter.presentation && (
@@ -134,7 +135,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"
                 />
               </svg>
-              Presentation
+              발표 자료
             </a>
           )}
         </div>
@@ -142,7 +143,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       {/* 본문 */}
       <div className="prose dark:prose-invert">
-        <MDXRemote source={project.content} />
+        <MDXRemote source={project.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
       </div>
     </article>
   );
