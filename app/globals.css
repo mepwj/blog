@@ -121,3 +121,30 @@ body {
   border-radius: 0.5rem;
   margin: 1rem 0;
 }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+.dark .prose th {
+  background-color: #374151;
+}
+
+.dark .prose th,
+.dark .prose td {
+  border-color: #4b5563;
+}

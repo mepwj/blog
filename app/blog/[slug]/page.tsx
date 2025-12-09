@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getPostSlugs } from '@/lib/mdx';
 import type { Metadata } from 'next';
 
@@ -86,7 +87,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* 본문 */}
       <div className="prose dark:prose-invert">
-        <MDXRemote source={post.content} />
+        <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
       </div>
     </article>
   );
